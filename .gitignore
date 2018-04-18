@@ -1,0 +1,9 @@
+/*.iml
+**/.classpath
+/.externalToolBuilders
+/.idea
+**/.project
+**/.settings
+**/target
+/**/.gitignore
+
