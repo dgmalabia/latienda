@@ -1,4 +1,4 @@
-package com.tienda;
+package com.tienda.dao;
 
 public class Producto {
 

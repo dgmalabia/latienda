@@ -1,25 +1,36 @@
 package com.tienda;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.tienda.constants.Constants.*;
+import com.tienda.dao.Producto;
+import com.tienda.dao.ProductoExtended;
+import com.tienda.services.LaTiendaService;
+
 public class App {
-    public static void main(String[] args) {
-        System.out.println("OMGHAI!");
+	
 
-        Producto[] productos = new Producto[] {
-                new Producto("+5 Macarrones", 10, 20), //
-                new Producto("Botella Vino Tinto", 2, 0), //
-                new Producto("Colonia", 5, 7), //
-                new Producto("Queso Azul", 0, 80), //
-                new Producto("Queso Azul", -1, 80),
-                new Producto("Acceso VIP Eric Mauller", 15, 20),
-                new Producto("Acceso VIP Eric Mauller", 10, 47),
-                new Producto("Acceso VIP Eric Mauller", 5, 47),
 
-                // TODO: La tarta de manzana no est√° implementada todav√≠a.
-                new Producto("Tarta de manzana", 3, 6) };
+	public static void main(String[] args) {
+        System.out.println("OMGHAI!"); 
 
-        LaTienda app = new LaTienda(productos);
+        List<ProductoExtended> productos = new ArrayList<ProductoExtended>();
+        productos.add(new ProductoExtended(_5_MACARRONES, 10, 20));
+        productos.add(new ProductoExtended(BOTELLA_VINO_TINTO, 2, 0));
+        productos.add(new ProductoExtended(COLONIA, 5, 7));
+        productos.add(new ProductoExtended(QUESO_AZUL, 0, 80));
+        productos.add(new ProductoExtended(QUESO_AZUL, -1, 80));
+        productos.add(new ProductoExtended(ACCESO_VIP_ERIC_MAULLER, 15, 20));
+        productos.add(new ProductoExtended(ACCESO_VIP_ERIC_MAULLER, 10, 47));
+        productos.add(new ProductoExtended(ACCESO_VIP_ERIC_MAULLER, 5, 47));
+        productos.add(new ProductoExtended(TARTA_DE_MANZANA, 15, 40));
+        
+        //Aqui podriamos usar un framework de instanciaciÛn de servicios como Spring @Autowired LaTiendaService app;
+        //Tambien podrÌamos haber definido una jerarquÌa interfaz - clase que implementa la interfaz de serivicios 
+        LaTiendaService app = new LaTiendaService();
 
-        int days = 2;
+        int days = 60;
         if (args.length > 0) {
             days = Integer.parseInt(args[0]) + 1;
         }
@@ -31,7 +42,7 @@ public class App {
                 System.out.println(producto);
             }
             System.out.println();
-            app.actualizarProductos();
+            app.updateDailyProducts(productos);
         }
     }
 
